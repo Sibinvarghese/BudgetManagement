@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Simple Sidebar - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Start Bootstrap </div>
+      <div class="list-group list-group-flush">
+        <a href="{% url 'home' %}" class="list-group-item list-group-item-action bg-light">HomePage</a>
+        <a href="{% url 'addexpens' %}" class="list-group-item list-group-item-action bg-light">Add Expense</a>
+        <a href="{% url 'review' %}" class="list-group-item list-group-item-action bg-light">View All Expenses</a>
+        <a href="{% url 'edit' %}" class="list-group-item list-group-item-action bg-light">Edit Profile</a>
+        <a href="{% url 'signout' %}" class="list-group-item list-group-item-action bg-light">LogOut</a>
+<!--        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>-->
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home'%}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'addexpens'%}">Add Expense</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'edit'%}">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'review'%}">View Expense</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'signout'%}">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <h1 class="mt-4">Budget Monitor System       {{request.user}}</h1>
+
+      </div>
+
+      <div class="container-fluid">
+          {% block body_block %}
+            <h2></h2>
+<!--                djangu usage here-->
+            your edit goes here
+<!--            django usage here-->
+          {% endblock %}
+
+
+      </div>
+
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+
+
+
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'javascript/jquery.min.js' %}"></script>
+  <script src="{% static 'javascript/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</body>
+
+</html>

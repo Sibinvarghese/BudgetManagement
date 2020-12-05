@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends 'Budget/base.html' %}
+    {% block body_block%}
+<h1>View Expenses</h1>
+
+<form action="" method="post">
+
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit">
+
+</form>
+
+
+{% if expens %}
+
+<h2>Total Amount {{total.amount__sum}}</h2>
+
+<table>
+    <tr>
+        <td>Category</td>
+        <td>Amount</td>
+        <td>Date</td>
+        <td>Note</td>
+
+    </tr>
+    {% for exp in expens %}
+    <tr>
+
+        <td>{{exp.category}}</td>
+        <td>{{exp.amount}} </td>
+        <td>{{exp.date}}</td>
+        <td>{{exp.note}}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endif%}
+
+{% endblock %}

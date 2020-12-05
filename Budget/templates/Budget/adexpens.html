@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'Budget/base.html' %}
+    {% block body_block%}
+<h2>Add Expense</h2>
+
+<form action="" method="post">
+
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit">
+</form>
+    <table>
+    <tr>
+        <td>Category</td>
+        <td>Amount</td>
+        <td>Date</td>
+        <td>Note</td>
+        <td>Action</td>
+    </tr>
+    {% for exp in expenses %}
+    <tr>
+        <td>{{exp.category}}</td>
+        <td>{{exp.amount}} </td>
+        <td>{{exp.date}}</td>
+        <td>{{exp.note}}</td>
+        <td><a href="{%url 'editExpense' exp.pk%}">Edit</a></td>
+        <td><a href="{%url 'deleteExpense' exp.pk%}">Delete</a></td>
+    </tr>
+
+    {% endfor %}
+
+
+</table>
+
+{% endblock %}
